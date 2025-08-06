@@ -601,7 +601,8 @@ function run_test_env_cmd { # <test name> <allocator name> <environment args> <c
       ops=`tail -$redis_tail "$outfile" | sed -n 's/.*: \([0-9\.]*\) requests per second.*/\1/p'`
       rtime=`echo "scale=3; (2000000 / $ops)" | bc`
       echo "$1 $2: ops/sec: $ops, relative time: ${rtime}s"
-      sed -E -i.bak "s/($1  *$2  *)[^ ]*/\10:$rtime/" "$benchres.line";;
+      cat "$benchres.line"  
+    sed -E -i.bak "s/($1  *$2  *)[^ ]*/\10:$rtime/" "$benchres.line";;
     larson*)
       rtime=`cat "$1-$2-out.txt" | sed -n 's/.* time: \([0-9\.]*\).*/\1/p'`
       echo "$1,$2, relative time: ${rtime}s"

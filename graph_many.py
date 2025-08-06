@@ -71,7 +71,7 @@ for d in data:
 # create the graph for time
 fig = px.box(data, x="Benchmark", y="Normalised Time", color="Allocator", log_y=True)
 fig.update_xaxes(showgrid=True)
-fig.update_yaxes(title_text="Normalised Time (log(time/mean time))")
+fig.update_yaxes(title_text="Normalised Time (time/mean time)")
 fig.update_layout(boxgroupgap=0.6)
 fig.update_traces(line_width=0.5, marker_line_width=0.5, marker_size=2, marker_symbol='x-thin')
 fig.write_html(f"time.html")
@@ -81,7 +81,7 @@ fig.write_image(f"time.pdf")
 # create the graph for memory
 fig = px.box(data, x="Benchmark", y="Normalised Memory", color="Allocator", log_y=True)
 fig.update_xaxes(showgrid=True)
-fig.update_yaxes(title_text="Normalised Memory (log(memory/mean memory))")
+fig.update_yaxes(title_text="Normalised Memory (memory/mean memory)")
 fig.update_layout(boxgroupgap=.6)
 fig.update_traces(line_width=0.5, marker_line_width=0.5, marker_size=2, marker_symbol='x-thin')
 fig.write_html(f"memory.html")
